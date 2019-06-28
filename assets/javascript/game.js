@@ -1,6 +1,6 @@
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var wordBank = ["agnetha", "frida", "benny", "bjorn", "disco", "waterloo", "glitter", "fringe", "sweden", "queen", "seventies", "eighties", "ineffable", "fernando", "andante", "honey", "eurovision", "tambourine", "stockholm", "chess", "hootenanny", "polar", "honey", "money", "visitors", "chiquitita"];
-var photos = ["assets/images/abba1.jpg","assets/images/abba2.jpg", "assets/images/abba3.jpg", "assets/images/abba4.jpg", "assets/images/abba5.jpg", "assets/images/abba6.jpg", "assets/images/abba7.jpg", "assets/images/abba8.jpg", "assets/images/abba9.jpg", "assets/images/abba10.jpg"]
+var photos = ["assets/images/abba1.jpg", "assets/images/abba2.jpg", "assets/images/abba3.jpg", "assets/images/abba4.jpg", "assets/images/abba5.jpg", "assets/images/abba6.jpg", "assets/images/abba7.jpg", "assets/images/abba8.jpg", "assets/images/abba9.jpg", "assets/images/abba10.jpg"]
 
 //score keepers
 var wins = 0;
@@ -13,7 +13,6 @@ var outRem = document.getElementById("outRem");
 var userGuess = document.getElementById("userguess");
 var outWins = document.getElementById("wins");
 var outLosses = document.getElementById("losses");
-var currentPhoto = 0
 
 
 // var game = { --I'll put this back later
@@ -53,7 +52,7 @@ function resetGame() {
     //computer picks a new letter
     makeBlanks(answerArr);
     outBlanks.textContent = blankArray.join(" ");
-    document.getElementById("abbaPic").src = photos[Math.floor(Math.random()*photos.length)];
+    document.getElementById("abbaPic").src = photos[Math.floor(Math.random() * photos.length)];
 
 }
 
@@ -101,16 +100,21 @@ document.onkeyup = function (event) {
             for (var j = 0; j < position.length; j++) {
                 blankArray.splice(position[j], 1, theirGuess.toUpperCase());
                 console.log("blank array says " + blankArray);
-            
+
             }
 
             outBlanks.textContent = blankArray.join(" ");
-            
+
             //if there are no blank spaces left in blankArray, win
             if (blankArray.indexOf("_") === -1) {
                 wins++;
+                outBlanks.textContent = blankArray.join(" ");
                 outWins.textContent = wins;
-                resetGame();
+                userGuess.textContent = "MAMMA MIA! YOU DID IT!"
+                outRem.textContent = "Click to continue..."
+                document.onclick = function (event) {
+                    resetGame();
+                }
             }
 
         }
