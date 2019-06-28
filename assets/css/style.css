@@ -1,0 +1,94 @@
+html {
+    background-image: url(../images/background.png);
+    height: 100vh;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+header {
+    background-color: black;
+    border-bottom: solid 5px fuchsia;
+    color: fuchsia;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.maingame {
+    width: 80%;
+    background-image: url(../images/stagelights.jpg);
+    background-size: 100vh;
+    margin: 0 auto;
+    border: solid 10px fuchsia;
+    padding: 10px;
+    overflow: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.leftside, .rightside {
+    width: 50%;
+    float: left;
+}
+
+h5, h4 {
+    background-color: white;
+    color: black;
+    text-align: left;
+    font-size: 20px;
+    padding: 10px;
+    border: solid 5px fuchsia;
+    margin: 10px 10px 0px 0px;
+    
+}
+
+.answerbox {
+    text-align: center;
+    margin: 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+h4 {
+    font-size: 22px;
+    margin-top: 0px;
+    border-top: 0px;
+    line-height: 150%;
+}
+
+.winlose {
+    /* width: 20%; */
+    margin: 10px;
+    font-size: 24px;
+}
+
+.boxes {
+    float: right;
+}
+
+img {
+    width: 80%;
+    border: solid 5px fuchsia;
+    margin: 10px;
+}
+
+.answerBox {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: solid 5px fuchsia;
+    width: 80%;
+    text-align: center;
+    font-size: 24px;
+    margin: 0px 10px 10px 10px;
+
+}
+
+span {
+    font-family: Arial, Helvetica, sans-serif;
+}

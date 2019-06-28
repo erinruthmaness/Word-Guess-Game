@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
-</head>
-<body>
-    <h6>testing testing</h6>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <span id="blanks"></span>
-    <h5>Remaining Tries: <span id="outRem"></span></h5>
-    <h5>Guesses so far: <span id="userguess"></span></h5>
-    <h5>Wins: <span id="wins"></span></h5>
+</head>
+
+<body>
+    <header>
+        <h1>ABBA Hangman</h1>
+    </header>
+    <div class="maingame clearfix">
+        <div class="leftside">
+        <img id="abbaPic" src="assets/images/abba1.jpg">
+        <div class="answerBox"><span id="blanks"></span>
+        </div></div>
+        <div class="boxes rightside">
+            <h5>Guesses so far: </h5>
+            <h4><span id="userguess"><div style="color: gray;">Type a letter to guess!</style></span></h4>
+            <h5>Remaining Tries: <span id="outRem"></span></h5>
+            <div class="winlose">
+                <h5>Wins: <span id="wins"></span></h5>
+                <h5>Losses: <span id="losses"></span></h5>
+            </div>
+        </div>
+
+    </div>
     <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>
