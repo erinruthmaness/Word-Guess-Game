@@ -2,13 +2,15 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 var wordBank = ["agnetha", "frida", "benny", "bjorn", "disco", "waterloo", "glitter", "fringe", "sweden", "queen", "seventies", "eighties", "ineffable", "fernando", "cher", "honey", "eurovision", "tambourine", "stockholm", "chess", "hootenanny", "polar", "honey", "money", "visitors", "chiquitita"];
 
 //score keepers
-var wins;
+var wins = 0;
 var remTries = 10;
 
 //things we need to be able to write to the DOM
 var outBlanks = document.getElementById("blanks");
 var outRem = document.getElementById("outRem");
 var userGuess = document.getElementById("userguess");
+var outWins = document.getElementById("wins");
+
 
 
 
@@ -38,6 +40,7 @@ outBlanks.textContent = blankArray.join(" ");
 function resetGame() {
     guessedLetters = [];
     userGuess.textContent = "";
+    blankArray = [];
     //empties array of guesses when they fail 10 times
     remTries = 10;
     outRem.textContent = remTries;
@@ -48,8 +51,6 @@ function resetGame() {
     //computer picks a new letter
     makeBlanks(answerArr);
     outBlanks.textContent = blankArray.join(" ");
-
-
 
 }
 
@@ -99,6 +100,13 @@ document.onkeyup = function (event) {
             }
 
             outBlanks.textContent = blankArray.join(" ");
+            
+            //if there are no blank spaces left in blankArray, win
+            if (blankArray.indexOf("_") === -1) {
+                wins++;
+                outWins.textContent = wins;
+                resetGame();
+            }
 
         }
 
