@@ -14,6 +14,11 @@ var userGuess = document.getElementById("userguess");
 var outWins = document.getElementById("wins");
 var outLosses = document.getElementById("losses");
 
+//audio clips for wins and losses
+var winSong = new Audio("assets/Winner.mp3")
+var loseSong = new Audio("assets/SOS.mp3");
+
+
 
 // var game = { --I'll put this back later
 //selects a random word from the array
@@ -79,8 +84,14 @@ document.onkeyup = function (event) {
         //failure last turn wipes the game
         else if (remTries === 1) {
             losses++;
+            userGuess.textContent = guessedLetters;
             outLosses.textContent = losses;
-            resetGame();
+            userGuess.textContent = "Disaster and disgrace! You lose!"
+            outRem.textContent = "Click to try again..."
+            loseSong.play();
+            document.onclick = function (event) {
+                resetGame();
+            }
         }
 
         //if they guess right
@@ -112,6 +123,7 @@ document.onkeyup = function (event) {
                 outWins.textContent = wins;
                 userGuess.textContent = "MAMMA MIA! YOU DID IT!"
                 outRem.textContent = "Click to continue..."
+                winSong.play();
                 document.onclick = function (event) {
                     resetGame();
                 }
