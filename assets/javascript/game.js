@@ -44,6 +44,9 @@ console.log("Answer will be " + blankArray);
 outBlanks.textContent = blankArray.join(" ");
 
 function resetGame() {
+    // document.onclick = function (event) {
+    //     return
+    // }
     guessedLetters = [];
     userGuess.textContent = " ";
     blankArray = [];
@@ -79,17 +82,13 @@ document.onkeyup = function (event) {
             outRem.textContent = remTries;
             //subtracts a turn
             console.log("so far they've guessed " + guessedLetters);
-           
+
         }
 
         //failure last turn wipes the game
         else if (remTries === 1) {
             losses++;
-            document.onkeyup = function (event) {
-                return;
-                //prevents losses from going up if a key is accidentally pressed
-            }
-            // userGuess.textContent = guessedLetters;
+            userGuess.textContent = guessedLetters;
             outLosses.textContent = losses;
             userGuess.textContent = "Disaster and disgrace! You lose!"
             outRem.textContent = "Click to try again..."
@@ -97,6 +96,10 @@ document.onkeyup = function (event) {
             document.onclick = function (event) {
                 resetGame();
             }
+        }
+
+        else if (remTries === 0) {
+            resetGame(); //just in case
         }
 
         //if they guess right
