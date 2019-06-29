@@ -73,18 +73,23 @@ document.onkeyup = function (event) {
         //selected answer doesn't match array and they have turns left:
         if (((answerArr.indexOf(theirGuess) === -1)) && (remTries !== 1)) {
             guessedLetters.push(theirGuess);
+            userGuess.textContent = guessedLetters.join(" ").toUpperCase();
             //adds wrong guess to the array
             remTries--;
             outRem.textContent = remTries;
             //subtracts a turn
             console.log("so far they've guessed " + guessedLetters);
-            userGuess.textContent = guessedLetters;
+           
         }
 
         //failure last turn wipes the game
         else if (remTries === 1) {
             losses++;
-            userGuess.textContent = guessedLetters;
+            document.onkeyup = function (event) {
+                return;
+                //prevents losses from going up if a key is accidentally pressed
+            }
+            // userGuess.textContent = guessedLetters;
             outLosses.textContent = losses;
             userGuess.textContent = "Disaster and disgrace! You lose!"
             outRem.textContent = "Click to try again..."
